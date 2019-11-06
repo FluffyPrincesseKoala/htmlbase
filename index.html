@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<center><h1>testHere is a cool pointless website !</h1></center>
+<br/>
+<br/>
+<h3>Wanna play hangman ?</h3>
+<i id="l1">_</i>
+<i id="l2">_</i>
+<i id="l3">_</i>
+<i id="l4">_</i>
+<i id="l5">_</i>
+<i style="white-space:pre">  </i>
+<i id="l6">_</i>
+<i id="l7">_</i>
+<i id="l8">_</i>
+<i id="l9">_</i>
+<i id="l0">_</i>
+<br/>
+<br/>
+<form id="form" action="#">
+    <label for="letterpicker">Pick a letter :
+        <input id="inp" type=text pattern="[A-Za-z]{1}">
+    </label>
+        <input id="go" type=submit oninput="checkletter()" value="go">
+</form>
+<br/>
+<br/>
+<br/>
+<div id="hang" style="white-space:pre"></div>
+</html>
+<script>
+    let inp = document.getElementById('inp');
+    let form = document.getElementById('form');
+    let hang = document.getElementById('hang');
+    var err = 0;
+
+    form.onsubmit = checkletter;
+    
+    function checkletter() {
+        if (inp.value.toUpperCase() == "H")
+            document.getElementById('l1').innerHTML = "H";
+        else if (inp.value.toUpperCase() == "E")
+            document.getElementById('l2').innerHTML = "E";
+        else if (inp.value.toUpperCase() == "L") {
+            document.getElementById('l3').innerHTML = "L";
+            document.getElementById('l4').innerHTML = "L";
+            document.getElementById('l9').innerHTML = "L";
+        }
+        else if (inp.value.toUpperCase() == "O") {
+            document.getElementById('l5').innerHTML = "O";
+            document.getElementById('l7').innerHTML = "O";
+        }
+        else if (inp.value.toUpperCase() == "W")
+            document.getElementById('l6').innerHTML = "W";
+        else if (inp.value.toUpperCase() == "R")
+            document.getElementById('l8').innerHTML = "R";
+        else if (inp.value.toUpperCase() == "D")
+            document.getElementById('l0').innerHTML = "D";
+        else {
+            err++;
+            if (err==1)
+                document.getElementById('hang').innerHTML = "<br/> |<br/> |<br/> |<br/> |<br/> |<br/> |<br/> |__"
+            if (err==2)
+                document.getElementById('hang').innerHTML = "_________<br/> |/           |<br/> |<br/> |<br/> |<br/> |<br/> |<br/> |__"
+            if (err==3)
+                document.getElementById('hang').innerHTML = "_________<br/> |/           |<br/> |         ( _ )<br/> |<br/> |<br/> |<br/> |<br/> |__"
+            if (err==4)
+                document.getElementById('hang').innerHTML = "_________<br/> |/           |<br/> |         ( _ )<br/> |            |<br/> |            |<br/> |<br/> |<br/> |__"
+            if (err==5)
+                document.getElementById('hang').innerHTML = "_________<br/> |/           |<br/> |         ( _ )<br/> |          / | \\<br/> |            |<br/> |<br/> |<br/> |__"
+            if (err==6)
+                document.getElementById('hang').innerHTML = "_________<br/> |/           |<br/> |         ( _ )<br/> |          / | \\<br/> |            |<br/> |          /   \\<br/> |<br/> |__"
+        }
+    };
+</script>
